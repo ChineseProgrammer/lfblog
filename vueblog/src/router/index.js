@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/Login'
 import Home from '@/components/Home'
-import LF from '@/components/LF'
+import LF from '@/module/LF/components/Home'
 import ArticleList from '@/components/ArticleList'
 import CateMana from '@/components/CateMana'
 import DataCharts from '@/components/DataCharts'
@@ -11,6 +11,7 @@ import UserMana from '@/components/UserMana'
 import BlogDetail from '@/components/BlogDetail'
 import Work from '@/components/work'
 import Test from '@/components/test'
+import Layout_header from '@/module/LF/components/layout/layout-header'
 
 
 Vue.use(Router)
@@ -23,7 +24,8 @@ export default new Router({
       hidden: true,
       components: {
         default:Login,
-        first:LF
+        first:LF,
+        layout_header:Layout_header,
       }
     }, {
       path: '/home',

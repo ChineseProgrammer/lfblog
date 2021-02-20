@@ -1,5 +1,5 @@
 <template>
-  <div id="LF" style="background-color: rgba(235, 235, 235, 0.08)">
+  <div id="LF">
     <router-view name = "first"/>
   </div>
 </template>
@@ -11,12 +11,8 @@ export default {
 </script>
 
 <style>
-#LF {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  body{
+    background: url('../../blogimg/img_bg.png') repeat;
+    margin:0px;
+  }
 </style>
