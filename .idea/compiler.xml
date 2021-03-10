@@ -6,16 +6,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="blog" />
+      </profile>
+      <profile name="Annotation profile for lf-blog-config" enabled="true">
+        <sourceOutputDir name="../lf.blog.config/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../lf.blog.config/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+      </profile>
+      <profile name="Annotation profile for blog" enabled="true">
+        <sourceOutputDir name="../oltp.lf.blog/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../oltp.lf.blog/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="blog" target="1.8" />
-    </bytecodeTargetLevel>
-  </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="blog" options="-parameters" />
-    </option>
   </component>
 </project>

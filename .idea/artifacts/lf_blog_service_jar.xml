@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="lf-blog-service:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/lf_blog_service_jar</output-path>
+    <root id="archive" name="lf-blog-service.jar" />
+  </artifact>
+</component>
