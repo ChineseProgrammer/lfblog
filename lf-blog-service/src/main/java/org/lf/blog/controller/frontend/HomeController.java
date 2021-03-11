@@ -33,6 +33,12 @@ public class HomeController {
         map.put("articles", articles);
         return map;
     }
+
+    /**
+     * 文章信息
+     * @param aid
+     * @return
+     */
     @RequestMapping(value = "/article/{aid}", method = RequestMethod.GET)
     public Article getArticleById(@PathVariable Long aid) {
         Article article = articleMapper.getArticleById(aid);
