@@ -57,7 +57,6 @@ ul {
 	padding: 30px 0;
 	position: relative;
 	border-bottom: #BFAB86 1px solid;
-	1px solid: ;
 	overflow: hidden;
 }
 .blogs figure {

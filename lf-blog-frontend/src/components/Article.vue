@@ -48,7 +48,6 @@
     name: 'Article',
     created(){
       var params  = getUrlKey("id ",window.location.href)
-      alert(params.id)
       getRequest('/api/home/article/'+params.id).then(res=>{
         this.article= res.data;
       }).catch(err=>{
