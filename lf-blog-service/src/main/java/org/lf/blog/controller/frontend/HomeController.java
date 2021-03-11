@@ -2,11 +2,10 @@
 package org.lf.blog.controller.frontend;
 
 import org.lf.blog.bean.Article;
+import org.lf.blog.mapper.ArticleMapper;
 import org.lf.blog.utils.Util;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,14 +21,22 @@ import java.util.Map;
 @RestController
 @RequestMapping("/home")
 public class HomeController {
+    @Autowired
+    ArticleMapper articleMapper;
     @RequestMapping(value = "/article/list", method = RequestMethod.GET)
     public Map<String, Object> getArticleByState(@RequestParam(value = "state", defaultValue = "-1") Integer state, @RequestParam(value = "page", defaultValue = "1") Integer page, @RequestParam(value = "count", defaultValue = "6") Integer count, String keywords) {
-//        int totalCount = articleService.getArticleCountByState(state, Util.getCurrentUser().getId(),keywords);
-//        List<Article> articles = articleService.getArticleByState(state, page, count,keywords);
-//        Map<String, Object> map = new HashMap<>();
-//        map.put("totalCount", totalCount);
-//        map.put("articles", articles);
-        return null;
+        int totalCount = articleMapper.getArticleCountByState(state, 7l,keywords);
+        int start = (page - 1) * count;
+        List<Article> articles = articleMapper.getArticleByState(state, start, count, 7l,keywords);
+        Map<String, Object> map = new HashMap<>();
+        map.put("totalCount", totalCount);
+        map.put("articles", articles);
+        return map;
+    }
+    @RequestMapping(value = "/article/{aid}", method = RequestMethod.GET)
+    public Article getArticleById(@PathVariable Long aid) {
+        Article article = articleMapper.getArticleById(aid);
+        return article;
     }
 }
 

@@ -21,7 +21,7 @@
         WHERE id=#{id}
     </update>
     <select id="getArticleByState" resultType="org.lf.blog.bean.Article">
-        SELECT a.id,a.`title`,a.`editTime`,a.`pageView`,a.`state`,u.`nickname`,c.`cateName`,a.uid FROM article a,user
+        SELECT a.id,a.`title`,a.`editTime`,a.`pageView`,a.`state`,u.`nickname`,c.`cateName`,a.uid,u.nickname,a.summary,a.htmlContent FROM article a,user
         u,category c WHERE a.`cid`=c.`id` AND a.`uid`=u.`id`
         <if test="state!=-2">
             and a.uid=#{uid}

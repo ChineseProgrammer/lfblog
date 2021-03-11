@@ -1,26 +1,28 @@
 <template>
 	<div class="blogs">
 		<figure>
-			<a href="https://www.yezismile.com/detail/493.html" title="云上班体验" target="_blank">
-				<img src="https://static.yezismile.com/data/photo/day_20200207/202002071654548727_s.jpeg" original="https://static.yezismile.com/data/photo/day_20200207/202002071654548727_s.jpeg" style="width: 167.5px; height: 137px; display: block;" alt="云上班体验">
-			</a>
+      <router-link :to="{name:'Article', params: {id:post.id,htmlContent:post.htmlContent}}">
+      <img :src="require('../assets/work.jpg')" original="" style="width: 167.5px; height: 137px; display: block;" :alt="post.title">
+			</router-link>
 		</figure>
 		<ul>
-			<h3><a href="https://www.yezismile.com/detail/493.html" title="云上班体验" target="_blank">{{post.title}}</a></h3>
-			<p>{{post.summary}}...<a href="https://www.yezismile.com/detail/493.html" target="_blank" style="color: #759b08;padding-left:5px;">[详情]</a>
+			<h3><a href="https://www.yezismile.com/detail/493.html" :title="post.title" target="_blank">{{post.title}}</a></h3>
+			<p>{{post.summary}}...
+        <a href="javascript:void(0)" @click="open_blank(post.id)" style="color: #759b08;padding-left:5px;">[详情]</a>
+
 			</p>
 			<p class="autor">
-				<span class="lm f_l"><a href="/memory/index?tag=3" style="color: #759b08">{{post.author}}</a></span>
+				<span class="lm f_l"><a href="/memory/index?tag=3" style="color: #759b08">{{post.nickname}}</a></span>
 				<span class="dtime f_l">{{post.editTime}}</span>
 				<input class="zan_cookie" type="hidden" value="2">
 				<input class="zan_newsid" type="hidden" value="493">
 				<span class="label_bottom f_r" style="padding-left: 0;">
 					<a href="javascript:void(0)" onclick="return false;" class="yz_zan" style="">{{post.viewsCount}}</a>
 				</span>
-				<span class="viewnum f_r">{{post.viewsCount}}k</span>
+				<span class="viewnum f_r">k</span>
 				<span class="pingl f_r" style="margin-right: 0;">
-					<a href="https://www.yezismile.com/detail/493.html#SOHUCS">
-						<span id="sourceId::493" class="cy_cmt_count">{{post.commentsCount}}</span>
+					<a href="https://www.yezismile.com/detail/468.html#SOHUCS">
+						<span id="sourceId::468" class="cy_cmt_count"></span>
 					</a>
 				</span>
 			</p>
@@ -34,7 +36,12 @@
 			post: {
 				type: Object
 			}
-		}
+		},
+    methods:{
+      open_blank:function(id){
+        window.open('/#/Article?id='+id,'_blank')
+      }
+    }
 	}
 </script>
 <style type="">

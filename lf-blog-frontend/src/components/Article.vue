@@ -21,44 +21,50 @@
       </div>
     </div>
     <div class="g-mn">
-       <template v-for="item in posts">
-         <post :post="item"></post>
-       </template>
+      <div style="text-align: left" v-html="article.htmlContent">
+      </div>
     </div>
 
-    <foot></foot>
+      <div id="SOHUCS" :sid="this.$route.params.id" ></div>
+      <a href="#SOHUCS" id="changyan_count_unit"></a>
+      <a href="#SOHUCS" id="changyan_parti_unit"></a>
+      <foot></foot>
 
   </div>
 </template>
-
+<script type="text/javascript">
+  window.changyan.api.config({
+    appid: 'cyvlEg0NX',
+    conf: 'prod_98e62b4b1c6ad6f436507f8c50cd5473'
+  });
+</script>
 <script>
-  import {postRequest} from '@/utils/api'
   import {getRequest} from '@/utils/api'
-   import Post from '@/components/Post'
-   import Foot from '@/components/Foot'
+  import {getUrlKey} from '@/utils/utils'
+  import Post from '@/components/Post'
+  import Foot from '@/components/Foot'
+  export default {
 
+    name: 'Article',
+    created(){
+      var params  = getUrlKey("id ",window.location.href)
+      alert(params.id)
+      getRequest('/api/home/article/'+params.id).then(res=>{
+        this.article= res.data;
+      }).catch(err=>{
 
-
-export default {
-
-  name: 'Home',
-  created(){
-    getRequest('/api/home/article/list',{}).then(res=>{
-      this.posts= res.data.articles;
-    }).catch(err=>{
-
-    });
-  },
-  data () {
-    return {
-      posts: []
+      });
+    },
+    data () {
+      return {
+        article: {}
+      }
+    },
+    components: {
+      Post,
+      Foot
     }
-  },
-  components: {
-    Post,
-    Foot
   }
-}
 </script>
 
 <style>
